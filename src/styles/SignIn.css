@@ -1,0 +1,67 @@
+/* Container holding everything */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f8f9fa;
+    
+  }
+  
+  /* Section for the image */
+  .image-section {
+    background-color: #003366; /* Dark blue background */
+    padding: 150px;
+    border-radius: 10px;
+    
+    position: relative;
+  }
+  
+  /* Image styling */
+  .signin-image {
+    max-width: 100%; /* Keep the image large */
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  /* Text below the image */
+  .image-section p {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+  }
+  
+  /* Form container on the right side */
+  .signin-form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Button hover effect */
+  .btn-outline-primary:hover {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .btn-outline-secondary:hover {
+    background-color: #6c757d;
+    color: #fff;
+  }
+  
+  /* Ensure proper alignment and spacing */
+  .container {
+    max-width: 1200px;
+  }
+  
+  .row {
+    min-height: 80vh; /* Ensure row fills most of the viewport height */
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  

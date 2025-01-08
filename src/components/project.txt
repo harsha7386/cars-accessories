@@ -1,0 +1,21 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBzyzHQqnx3K6bfqMZGRS_98dTILx3vi5c",
+  authDomain: "cars-otp.firebaseapp.com",
+  projectId: "cars-otp",
+  storageBucket: "cars-otp.firebasestorage.app",
+  messagingSenderId: "81831934092",
+  appId: "1:81831934092:web:df2f1759eae3f12e8ca3a9",
+  measurementId: "G-ZJW41RH20G"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
