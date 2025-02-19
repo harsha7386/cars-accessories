@@ -5,22 +5,28 @@ import "../styles/SignIn.css"; // Import the CSS file for custom styles
 
 function UserLogin() {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
+  // const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const loginData = { username, password };
+    const loginData = { email, password };
 
     axios
-      .post("http://localhost:8080/api/auth/login", loginData) // Update with your backend URL
+      .post("http://localhost:8080/users/login", loginData) // Update with your backend URL
       .then((response) => {
-        console.log(response.data);
-        navigate("/dashboard"); // Navigate to the dashboard or home page after successful login
+        if (response.data) { 
+          // Check if response contains valid user data
+          console.log("Login successful:", response.data);
+          navigate("/"); // Redirect only if login is successful
+        } else {
+          alert("Invalid email or password. Please try again."); // Show error if login fails
+        }
       })
       .catch((error) => {
-        console.error(error);
+        console.error("Error during login:", error);
         alert("Login failed. Please try again.");
       });
   };
@@ -46,13 +52,13 @@ function UserLogin() {
             <h2 className="text-center">User Login</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-3">
-                <label className="form-label">Username</label>
+                <label className="form-label">Email</label>
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Enter username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Enter email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="mb-3">
