@@ -15,9 +15,9 @@ import EnterAddress from "./components/EnterAddress";
 import Cart from "./components/Cart";
 import Footer from "./components/footer/Footer";
 import CategoryIamge from "./components/CategoryIamge";
- import Navbar from "./components/Navbar";
+//  import Navbar from "./components/Navbar";
 function App() {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems] = useState([]);
 
   // const addToCart = (item) => {
   //   setCartItems([...cartItems, item]);
