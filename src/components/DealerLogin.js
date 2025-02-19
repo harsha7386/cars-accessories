@@ -14,13 +14,17 @@ function DealerLogin() {
     const loginData = { email, password };
 
     axios
-      .post("http://localhost:8080/api/auth/dealer-login", loginData) // Backend API for dealer login
+      .post("http://localhost:8080/dealers/login", loginData) // Backend API for dealer login
       .then((response) => {
-        console.log(response.data);
-        navigate("/dealer-dashboard"); // Redirect to dealer dashboard on success
+        if (response.data) {
+          console.log("Dealer Login Successful:", response.data);
+          navigate("/add-parts"); // Redirect to Add Parts page after login
+        } else {
+          alert("Invalid email or password. Please try again.");
+        }
       })
       .catch((error) => {
-        console.error(error);
+        console.error("Error during login:", error);
         alert("Login failed. Please try again.");
       });
   };
