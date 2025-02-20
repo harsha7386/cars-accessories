@@ -1,26 +1,15 @@
-# Use a valid Maven image with JDK 17
-FROM maven:3.9.6-eclipse-temurin-17 AS build
+# Use the Eclipse alpine official image
+# https://hub.docker.com/_/eclipse-temurin
+FROM eclipse-temurin:21-jdk-alpine
+
+# Create and change to the app directory.
 WORKDIR /app
 
-# Copy the pom.xml first and download dependencies (cache optimization)
-COPY pom.xml .
-RUN mvn dependency:go-offline
+# Copy files to the container image
+COPY . ./
 
-# Copy the source code
-COPY src ./src
+# Build the app.
+RUN ./mvnw -DoutputFile=target/mvn-dependency-list.log -B -DskipTests clean dependency:list install
 
-# Build the application
-RUN mvn clean package -DskipTests
-
-# Use OpenJDK to run the application
-FROM eclipse-temurin:17
-WORKDIR /app
-
-# Copy the JAR file from the build stage
-COPY --from=build /app/target/*.jar app.jar
-
-# Expose the application port
-EXPOSE 8080
-
-# Start the application
-CMD ["java", "-jar", "app.jar"]
+# Run the app by dynamically finding the JAR file in the target directory
+CMD ["sh", "-c", "java -jar target/*.jar"]
