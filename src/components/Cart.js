@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Col, Button } from "react-bootstrap";
+import {  Button } from "react-bootstrap";
 
 function Cart() {
   const [cart, setCart] = useState([]);

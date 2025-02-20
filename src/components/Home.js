@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/home.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Col from 'react-bootstrap/Col';
-import { Link } from "react-router-dom";
+// import Col from 'react-bootstrap/Col';
+//  import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 // import AddParts from "./AddParts";
 function Home() {
@@ -16,14 +16,17 @@ function Home() {
   const [errorMessage, setErrorMessage] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
- 
+
   const navigate = useNavigate();
-  const [filteredProducts, setFilteredProducts] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
+  //  const [filteredProducts, setFilteredProducts] = useState([]);
+  //  const [searchQuery, setSearchQuery] = useState("");
   const [cartProducts, setCartProducts] = useState([]);
+
+
   const [cartItems, setCartItems] = useState(
     JSON.parse(localStorage.getItem("cart-items")) || []
   );
+  console.log(cartItems);
   const vehicleTypes = ["2Wheeler", "4Wheeler", "Heavy Vehicle"];
   const availableCompanies = {
     "2Wheeler": ["Honda", "Yamaha", "Bajaj"],
@@ -132,10 +135,76 @@ function Home() {
     "https://boodmo.com/media/images/categories/50008e4.svg",
     "https://boodmo.com/media/images/categories/fab8332.svg",
   ];
-  
-  const samplePartsData = {
-    "ebba234": [
-      {
+
+  const samplePartsData = useMemo(() => {
+    return {
+      "ebba234": [
+        {
+          id: 2,
+          name: " Honda Engine Oil",
+          price: "$30",
+          description: "Synthetic engine oil.",
+          company: "Honda",
+          model: "CBR600",
+          year: "2019",
+          image: "https://m.media-amazon.com/images/I/61-WGFBqvAL.jpg",
+        },
+        {
+          id: 2,
+          name: " Honda Engine Oil",
+          price: "$30",
+          description: "Synthetic engine oil.",
+          company: "Honda",
+          model: "CBR600",
+          year: "2019",
+          image: "https://m.media-amazon.com/images/I/61-WGFBqvAL.jpg",
+        },
+      ],
+      "10f1952": [
+        {
+          id: 2,
+          name: " Honda Engine Oil",
+          price: "$30",
+          description: "Synthetic engine oil.",
+          company: "Honda",
+          model: "CBR600",
+          year: "2019",
+          image: "https://m.media-amazon.com/images/I/61-WGFBqvAL.jpg",
+        },
+        {
+          id: 2,
+          name: " Honda Engine Oil",
+          price: "$30",
+          description: "Synthetic engine oil.",
+          company: "Honda",
+          model: "CBR600",
+          year: "2019",
+          image: "https://m.media-amazon.com/images/I/61-WGFBqvAL.jpg",
+        },
+      ],
+      "51eb913": [
+        {
+          id: 2,
+          name: " Honda Engine Oil",
+          price: "$30",
+          description: "Synthetic engine oil.",
+          company: "Honda",
+          model: "CBR600",
+          year: "2019",
+          image: "https://m.media-amazon.com/images/I/61-WGFBqvAL.jpg",
+        },
+        {
+          id: 2,
+          name: " Honda Engine Oil",
+          price: "$30",
+          description: "Synthetic engine oil.",
+          company: "Honda",
+          model: "CBR600",
+          year: "2019",
+          image: "https://m.media-amazon.com/images/I/61-WGFBqvAL.jpg",
+        },
+      ],
+      "d5dd6ce": [{
         id: 2,
         name: " Honda Engine Oil",
         price: "$30",
@@ -155,8 +224,6 @@ function Home() {
         year: "2019",
         image: "https://m.media-amazon.com/images/I/61-WGFBqvAL.jpg",
       },
-    ],
-    "10f1952": [
       {
         id: 2,
         name: " Honda Engine Oil",
@@ -166,115 +233,53 @@ function Home() {
         model: "CBR600",
         year: "2019",
         image: "https://m.media-amazon.com/images/I/61-WGFBqvAL.jpg",
-      },
-      {
-        id: 2,
-        name: " Honda Engine Oil",
-        price: "$30",
-        description: "Synthetic engine oil.",
-        company: "Honda",
-        model: "CBR600",
-        year: "2019",
-        image: "https://m.media-amazon.com/images/I/61-WGFBqvAL.jpg",
-      },
-    ],
-    "51eb913": [
-      {
-        id: 2,
-        name: " Honda Engine Oil",
-        price: "$30",
-        description: "Synthetic engine oil.",
-        company: "Honda",
-        model: "CBR600",
-        year: "2019",
-        image: "https://m.media-amazon.com/images/I/61-WGFBqvAL.jpg",
-      },
-      {
-        id: 2,
-        name: " Honda Engine Oil",
-        price: "$30",
-        description: "Synthetic engine oil.",
-        company: "Honda",
-        model: "CBR600",
-        year: "2019",
-        image: "https://m.media-amazon.com/images/I/61-WGFBqvAL.jpg",
-      },
-    ],
-    "d5dd6ce": [{
-      id: 2,
-      name: " Honda Engine Oil",
-      price: "$30",
-      description: "Synthetic engine oil.",
-      company: "Honda",
-      model: "CBR600",
-      year: "2019",
-      image: "https://m.media-amazon.com/images/I/61-WGFBqvAL.jpg",
-    },
-    {
-      id: 2,
-      name: " Honda Engine Oil",
-      price: "$30",
-      description: "Synthetic engine oil.",
-      company: "Honda",
-      model: "CBR600",
-      year: "2019",
-      image: "https://m.media-amazon.com/images/I/61-WGFBqvAL.jpg",
-    },
-    {
-      id: 2,
-      name: " Honda Engine Oil",
-      price: "$30",
-      description: "Synthetic engine oil.",
-      company: "Honda",
-      model: "CBR600",
-      year: "2019",
-      image: "https://m.media-amazon.com/images/I/61-WGFBqvAL.jpg",
-    },    ],
-    "fab8332": [
-      {
-        id: 2,
-        name: " Honda Engine Oil",
-        price: "$30",
-        description: "Synthetic engine oil.",
-        company: "Honda",
-        model: "CBR600",
-        year: "2019",
-        image: "https://m.media-amazon.com/images/I/61-WGFBqvAL.jpg",
-      },
-      {
-        id: 2,
-        name: " Honda Engine Oil",
-        price: "$30",
-        description: "Synthetic engine oil.",
-        company: "Honda",
-        model: "CBR600",
-        year: "2019",
-        image: "https://m.media-amazon.com/images/I/61-WGFBqvAL.jpg",
-      },
-    ],
-    "50008e4":  [
-      {
-        id: 2,
-        name: " Honda Engine Oil",
-        price: "$30",
-        description: "Synthetic engine oil.",
-        company: "Honda",
-        model: "CBR600",
-        year: "2019",
-        image: "https://m.media-amazon.com/images/I/61-WGFBqvAL.jpg",
-      },
-      {
-        id: 2,
-        name: " Honda Engine Oil",
-        price: "$30",
-        description: "Synthetic engine oil.",
-        company: "Honda",
-        model: "CBR600",
-        year: "2019",
-        image: "https://m.media-amazon.com/images/I/61-WGFBqvAL.jpg",
-      },
-    ],
-  };
+      },],
+      "fab8332": [
+        {
+          id: 2,
+          name: " Honda Engine Oil",
+          price: "$30",
+          description: "Synthetic engine oil.",
+          company: "Honda",
+          model: "CBR600",
+          year: "2019",
+          image: "https://m.media-amazon.com/images/I/61-WGFBqvAL.jpg",
+        },
+        {
+          id: 2,
+          name: " Honda Engine Oil",
+          price: "$30",
+          description: "Synthetic engine oil.",
+          company: "Honda",
+          model: "CBR600",
+          year: "2019",
+          image: "https://m.media-amazon.com/images/I/61-WGFBqvAL.jpg",
+        },
+      ],
+      "50008e4": [
+        {
+          id: 2,
+          name: " Honda Engine Oil",
+          price: "$30",
+          description: "Synthetic engine oil.",
+          company: "Honda",
+          model: "CBR600",
+          year: "2019",
+          image: "https://m.media-amazon.com/images/I/61-WGFBqvAL.jpg",
+        },
+        {
+          id: 2,
+          name: " Honda Engine Oil",
+          price: "$30",
+          description: "Synthetic engine oil.",
+          company: "Honda",
+          model: "CBR600",
+          year: "2019",
+          image: "https://m.media-amazon.com/images/I/61-WGFBqvAL.jpg",
+        },
+      ],
+    };
+  }, []);
   const handleVehicleTypeChange = (e) => {
     const selectedType = e.target.value;
     setVehicleType(selectedType);
@@ -317,7 +322,7 @@ function Home() {
       setErrorMessage("");
     }
   };
-  
+
   const clickSearch = (e) => {
     e.preventDefault();
     const searchLower = searchTerm.toLowerCase().trim();
@@ -351,7 +356,7 @@ function Home() {
   // Function to add a part to the cart
   const addToCart = (selectedPart) => {
     let cart = JSON.parse(localStorage.getItem("cart-items")) || [];
-  
+
     // Check if part already exists in cart
     const existingPart = cart.find((part) => part.id === selectedPart.id);
     if (existingPart) {
@@ -361,19 +366,20 @@ function Home() {
       // Otherwise, add new part with quantity 1
       cart.push({ ...selectedPart, quantity: 1 });
     }
-  
+
     // Save updated cart to localStorage
     localStorage.setItem("cart-items", JSON.stringify(cart));
-  
+
     alert(`${selectedPart.name} added to cart!`);
-  
-  
+
+
     navigate("/cart");
   };
-  
+
   useEffect(() => {
     localStorage.setItem("samplePartsData", JSON.stringify(samplePartsData));
-  }, []); 
+  }, [samplePartsData]);
+
 
   const handleCategoryClick = (imageUrl) => {
     const categoryId = imageUrl.split("/").pop().split(".")[0]; // Extracts 'ebba234' from URL
@@ -438,11 +444,11 @@ function Home() {
               })}
             </select>
           </div>
-          
-      <button onClick={handleSearch}>Search</button>
-      {errorMessage && <p>{errorMessage}</p>}
-      
-    
+
+          <button onClick={handleSearch}>Search</button>
+          {errorMessage && <p>{errorMessage}</p>}
+
+
         </div>
 
         {/* Display search results */}
@@ -531,20 +537,20 @@ function Home() {
         </div>
 
         <div className="categories-container">
-        <div>
-      <h1>Select a Category</h1>
-      <div style={{ display: "flex", gap: "30px" }}>
-        {categoryImages.map((image, index) => (
-          <img
-            key={index}
-            src={image}
-            alt={`Category ${index}`}
-            style={{ width: "200px", cursor: "pointer" }}
-            onClick={() => handleCategoryClick(image)}
-          />
-        ))}
-      </div>
-    </div>
+          <div>
+            <h1>Select a Category</h1>
+            <div style={{ display: "flex", gap: "30px" }}>
+              {categoryImages.map((image, index) => (
+                <img
+                  key={index}
+                  src={image}
+                  alt={`Category ${index}`}
+                  style={{ width: "200px", cursor: "pointer" }}
+                  onClick={() => handleCategoryClick(image)}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
